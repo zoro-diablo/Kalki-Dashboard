@@ -1,103 +1,21 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { IoIosArrowForward } from 'react-icons/io'
 import { IoIosArrowRoundBack } from 'react-icons/io'
 import { MdOutlineCircle } from 'react-icons/md'
-import { MdFolderSpecial } from 'react-icons/md'
-import { MdOutlineSecurity } from 'react-icons/md'
-import { FaWpforms } from 'react-icons/fa6'
-import { TiInfoLargeOutline } from 'react-icons/ti'
-import { IoBookmarksSharp } from 'react-icons/io5'
-import { IoBriefcase } from 'react-icons/io5'
-import { BiSolidWidget } from 'react-icons/bi'
-import { FaUser } from 'react-icons/fa'
-import { MdNavigation, MdTableRows } from 'react-icons/md'
+import { menuItems } from '../../utils/data'
+import { HiOutlineHome } from 'react-icons/hi'
+import { motion } from 'framer-motion'
 import './sidebar.scss'
 
-const menuItems = [
-  {
-    name: 'Special Pages',
-    subItems: ['Portfolio', 'Academy', 'Trading', 'Watchlist', 'List'],
-    icon: MdFolderSpecial,
+const navVarients = {
+  whileHover: {
+    color: ['#bfbfbf', '#d3d1d1', '#fff'],
+    transition: {
+      duration: 0.5,
+      ease: 'easeInOut',
+    },
   },
-  {
-    name: 'Authentication',
-    subItems: [
-      'Login',
-
-      'Register',
-
-      'Confirm Mail',
-
-      'Lock Screen',
-
-      'Recover Password',
-    ],
-    icon: MdOutlineSecurity,
-  },
-  {
-    name: 'Users',
-    subItems: ['Portfolio', 'Academy', 'Trading', 'Watchlist', 'List'],
-    icon: FaUser,
-  },
-  {
-    name: 'Utilities',
-    subItems: ['Portfolio', 'Academy', 'Trading', 'Watchlist', 'List'],
-    icon: IoBookmarksSharp,
-  },
-  {
-    name: 'UI Elements',
-    subItems: [
-      'Avatars',
-      'Alerts',
-      'Badge',
-      'Breadcrumb',
-      'Buttons',
-      'Buttons Group',
-      'Box Shadow',
-      'Colors',
-      'Cards',
-      'Carousel',
-      'Grid',
-      'Helper Classes',
-      'Images',
-      'List Group',
-      'Modal',
-      'Notifications',
-      'Pagination',
-      'Popovers',
-      'Typography',
-      'Tabs',
-      'Tooltips',
-      'Video',
-    ],
-    icon: IoBriefcase,
-  },
-  {
-    name: 'Widget',
-    subItems: ['Widget Basic', 'Widget Chart', 'Widget Card'],
-    icon: BiSolidWidget,
-  },
-  {
-    name: 'Maps',
-    subItems: ['Google', 'Vector'],
-    icon: MdNavigation,
-  },
-  {
-    name: 'Form',
-    subItems: ['Elements', 'Wizard', 'Validation'],
-    icon: FaWpforms,
-  },
-  {
-    name: 'Table',
-    subItems: ['Bootstrap Table', 'Datatable'],
-    icon: MdTableRows,
-  },
-  {
-    name: 'Icons',
-    subItems: ['Solid', 'Outlined', 'Dual Tone'],
-    icon: TiInfoLargeOutline,
-  },
-]
+}
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(menuItems.map(() => false))
@@ -117,13 +35,34 @@ const Sidebar = () => {
     setIsButtonClicked(!isButtonClicked)
   }
 
+  const navRef = useRef()
+
+  useEffect(() => {
+    const currentNavRef = navRef.current
+
+    const handleScroll = () => {
+      if (currentNavRef.scrollTop > 0) {
+        currentNavRef.classList.add('scrolled')
+      } else {
+        currentNavRef.classList.remove('scrolled')
+      }
+    }
+
+    currentNavRef.addEventListener('scroll', handleScroll)
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      currentNavRef.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
+
   return (
     <div
-      className={`container text-[#bfbfbf] w-[266px]  bg-[#19191a]  ${
+      className={`container text-[#bfbfbf] w-[296px]  bg-[#19191a]  ${
         isActive ? 'active' : ''
       }`}
     >
-      <div className='relative pb-[76px] border-b border-[#5b5b5b]'>
+      <div className='relative pb-[76px] border-b border-[#4c4c4c]'>
         <div className='head flex fixed py-[13px] pl-[16px]'>
           <div className='flex'>
             <img
@@ -152,26 +91,56 @@ const Sidebar = () => {
         </div>
       </div>
 
-      <div className='nav overflow-y-auto h-[89vh]'>
+      <div className='nav  overflow-y-auto h-[89vh]' ref={navRef}>
+        <div className='flex justify-between items-center ml-[26px] mt-[28px] mb-[26px] cursor-pointer '>
+          <div className=' flex items-center'>
+            <HiOutlineHome
+              size={21}
+              className='text-[#bfbfbf] hover:text-white duration-500 ease-in-out'
+            />
+            <motion.div
+              whileHover='whileHover'
+              variants={navVarients}
+              className='ml-[16px] text-[14px] content-heading text-[#bfbfbf]  '
+            >
+              Dashboard
+            </motion.div>
+          </div>
+        </div>
         {menuItems.map((item, index) => (
           <div key={index} className=''>
             <div
               className='flex justify-between items-center ml-[26px] mt-[14px] mb-[13px] cursor-pointer '
               onClick={() => toggleItem(index)}
             >
-              <div className=' flex items-center'>
-                <item.icon size={21} className='text-[#bfbfbf]' />
-                <div className='ml-[16px] text-[14px] content-heading text-[#bfbfbf] '>
+              <motion.div
+                whileHover='whileHover'
+                variants={navVarients}
+                className=' flex items-center'
+              >
+                <item.icon
+                  size={21}
+                  className='text-[#bfbfbf] hover:text-white duration-500 ease-in-out'
+                />
+                <motion.div
+                  whileHover='whileHover'
+                  variants={navVarients}
+                  className='ml-[16px] text-[14px] content-heading text-[#bfbfbf] '
+                >
                   {item.name}
-                </div>
-              </div>
-              <div className='cursor-pointer'>
+                </motion.div>
+              </motion.div>
+              <motion.div
+                whileHover='whileHover'
+                variants={navVarients}
+                className='cursor-pointer'
+              >
                 <IoIosArrowForward
-                  className={`text-[#bfbfbf] arrow-icon mr-2 ${
+                  className={`text-[#bfbfbf] arrow-icon mr-3 hover:text-white duration-500 ease-in-out ${
                     isRotated[index] ? 'transform rotate-90' : ''
                   }`}
                 />
-              </div>
+              </motion.div>
             </div>
             <div
               className={`overflow-hidden transition-max-height duration-300 ease-in-out ${
@@ -179,17 +148,23 @@ const Sidebar = () => {
               }`}
             >
               {item.subItems.map((subItem, i) => (
-                <ul
+                <motion.ul
+                  whileHover='whileHover'
+                  variants={navVarients}
                   key={i}
                   className='flex flex-col mx-auto sub-menus text-[#bfbfbf] '
                 >
                   <li className='flex items-center gap-[13px] py-[13px] ml-12'>
                     <MdOutlineCircle size={12} />
-                    <span className='text-[14px] cursor-pointer'>
+                    <motion.span
+                      whileHover='whileHover'
+                      variants={navVarients}
+                      className='text-[14px] cursor-pointer'
+                    >
                       {subItem}
-                    </span>
+                    </motion.span>
                   </li>
-                </ul>
+                </motion.ul>
               ))}
             </div>
             {item.name === 'Utilities' && (
@@ -197,23 +172,23 @@ const Sidebar = () => {
             )}
           </div>
         ))}
-      <div className='mt-[100px] mx-5 mb-[30px] news'>
-        <div className='bg-[#202022] rounded-sm flex flex-col justify-center'>
-          <div className='flex justify-center'>
-            <img src='/safe.png' alt='safe' width={180} />
-          </div>
-          <div className='mx-4 flex flex-col justify-center'>
-            <p className='text-[14px] text-center'>
-              Be more secure with Pro Feature
-            </p>
-            <button className='bg-[#dd8219] hover:bg-[#dd8219e2] text-[#ffffffed] hover:text-black font-medium   rounded-[5px]  py-2 px-4 mt-5 mb-5 text-[14px]'>
-              Upgrade Now
-            </button>
+        <div className='mt-[100px] mx-5 mb-[30px] news'>
+          <div className='bg-[#202022] rounded-sm flex flex-col justify-center'>
+            <div className='flex justify-center'>
+              <img src='/safe.png' alt='safe' width={180} />
+            </div>
+            <div className='mx-4 flex flex-col justify-center'>
+              <p className='text-[14px] text-center'>
+                Be more secure with Pro Feature
+              </p>
+              <button className='bg-[#dd8219] hover:bg-[#dd8219e2] text-[#ffffffed] hover:text-black font-medium   rounded-[5px]  py-2 px-4 mt-5 mb-5 text-[14px]'>
+                Upgrade Now
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </div>
-      </div>
   )
 }
 

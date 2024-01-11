@@ -1,36 +1,44 @@
 .container {
   transition: width 0.3s ease-in-out;
-    box-shadow: rgb(0, 0, 0) 0px 20px 30px -10px;
-      
+  box-shadow: rgb(0, 0, 0) 0px 20px 30px -10px;
+
 }
 .container.active {
   width: 76px;
   transition: width 0.3s ease-in-out;
 }
 
-.container.active .title{
-    display: none;
+.container.active .title {
+  display: none;
 }
 
-.container.active .content-heading{
-    display: none;
+.container.active .content-heading {
+  display: none;
 }
 
-.container.active .arrow-icon{
-    display: none;
+.container.active .arrow-icon {
+  display: none;
 }
 
-.container.active .news{
-    display: none;
+.container.active .news {
+  display: none;
 }
 
-.container.active .sub-menus{
-    display: none;
+.container.active .sub-menus {
+  display: none;
 }
 
-.nav{
-&::-webkit-scrollbar {
-    width: 7px;
+.nav {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.nav.scrolled {
+ 
+  &::-webkit-scrollbar {
+    display: block;
+    width: 4px;
     opacity: 0;
     transition: opacity 0.2s;
   }

@@ -1,10 +1,7 @@
 import React from 'react'
 import ApexCharts from 'apexcharts'
 import './graph.scss'
-import { options } from '../../utilities/data'
-
-
-
+import { options } from '../../utils/data'
 
 class ArearGraph extends React.Component {
   chart = null
@@ -76,7 +73,7 @@ class ArearGraph extends React.Component {
     return (
       <div className=''>
         <div id='chart-timeline'></div>
-        <div className='flex justify-end gap-x-4 mb-5 mr-2'>
+        <div className='flex justify-end gap-x-4 mt-4 mb-10 mr-2'>
           <button
             id='one_month'
             onClick={this.handleOneMonthClick}

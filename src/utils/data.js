@@ -1,3 +1,13 @@
+import { MdFolderSpecial } from 'react-icons/md'
+import { MdOutlineSecurity } from 'react-icons/md'
+import { FaWpforms } from 'react-icons/fa6'
+import { TiInfoLargeOutline } from 'react-icons/ti'
+import { IoBookmarksSharp } from 'react-icons/io5'
+import { IoBriefcase } from 'react-icons/io5'
+import { BiSolidWidget } from 'react-icons/bi'
+import { FaUser } from 'react-icons/fa'
+import { MdNavigation, MdTableRows } from 'react-icons/md'
+
 export const options = {
   series: [
     {
@@ -338,3 +348,123 @@ export const options = {
     width: 1,
   },
 }
+
+export const transactions = [
+  {
+    id: 1,
+    date: '24.04.2021',
+    amount: '0.0121 BTC',
+    type: 'Funds received on wallet',
+  },
+  { id: 2, date: '25.04.2021', amount: '0.0152 BTC', type: 'Withdraw Fund' },
+  {
+    id: 3,
+    date: '26.04.2021',
+    amount: '0.0098 BTC',
+    type: 'Transaction Fund',
+  },
+  { id: 4, date: '27.04.2021', amount: '0.0075 BTC', type: 'Deposit Fund' },
+  { id: 5, date: '28.04.2021', amount: '0.0112 BTC', type: 'Purchase' },
+  {
+    id: 6,
+    date: '24.04.2021',
+    amount: '0.0121 BTC',
+    type: 'Funds received on wallet',
+  },
+  { id: 7, date: '29.04.2021', amount: '0.0087 BTC', type: 'Sell' },
+  {
+    id: 8,
+    date: '26.04.2021',
+    amount: '0.0098 BTC',
+    type: 'Transaction Fund',
+  },
+  { id: 9, date: '30.04.2021', amount: '0.0063 BTC', type: 'Withdraw Fund' },
+  { id: 10, date: '01.05.2021', amount: '0.0145 BTC', type: 'Purchase' },
+  { id: 11, date: '02.05.2021', amount: '0.0132 BTC', type: 'Deposit Fund' },
+]
+
+export const menuItems = [
+  {
+    name: 'Special Pages',
+    subItems: ['Portfolio', 'Academy', 'Trading', 'Watchlist', 'List'],
+    icon: MdFolderSpecial,
+  },
+  {
+    name: 'Authentication',
+    subItems: [
+      'Login',
+
+      'Register',
+
+      'Confirm Mail',
+
+      'Lock Screen',
+
+      'Recover Password',
+    ],
+    icon: MdOutlineSecurity,
+  },
+  {
+    name: 'Users',
+    subItems: ['Portfolio', 'Academy', 'Trading', 'Watchlist', 'List'],
+    icon: FaUser,
+  },
+  {
+    name: 'Utilities',
+    subItems: ['Portfolio', 'Academy', 'Trading', 'Watchlist', 'List'],
+    icon: IoBookmarksSharp,
+  },
+  {
+    name: 'UI Elements',
+    subItems: [
+      'Avatars',
+      'Alerts',
+      'Badge',
+      'Breadcrumb',
+      'Buttons',
+      'Buttons Group',
+      'Box Shadow',
+      'Colors',
+      'Cards',
+      'Carousel',
+      'Grid',
+      'Helper Classes',
+      'Images',
+      'List Group',
+      'Modal',
+      'Notifications',
+      'Pagination',
+      'Popovers',
+      'Typography',
+      'Tabs',
+      'Tooltips',
+      'Video',
+    ],
+    icon: IoBriefcase,
+  },
+  {
+    name: 'Widget',
+    subItems: ['Widget Basic', 'Widget Chart', 'Widget Card'],
+    icon: BiSolidWidget,
+  },
+  {
+    name: 'Maps',
+    subItems: ['Google', 'Vector'],
+    icon: MdNavigation,
+  },
+  {
+    name: 'Form',
+    subItems: ['Elements', 'Wizard', 'Validation'],
+    icon: FaWpforms,
+  },
+  {
+    name: 'Table',
+    subItems: ['Bootstrap Table', 'Datatable'],
+    icon: MdTableRows,
+  },
+  {
+    name: 'Icons',
+    subItems: ['Solid', 'Outlined', 'Dual Tone'],
+    icon: TiInfoLargeOutline,
+  },
+]

@@ -1,0 +1,20 @@
+.container {
+  transition: width 0.3s ease-in-out;
+    box-shadow: rgb(0, 0, 0) 0px 20px 30px -10px;
+}
+.container.active {
+  width: 76px;
+  transition: width 0.3s ease-in-out;
+}
+
+.container.active .title{
+    display: none;
+}
+
+.container.active .content-heading{
+    display: none;
+}
+
+.container.active .arrow-icon{
+    display: none;
+}

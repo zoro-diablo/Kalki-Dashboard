@@ -86,36 +86,40 @@ const TableSwitch = () => {
       <div className='line-bar inset-x-0 h-px -translate-y-1/2 bg-transparent bg-gradient-to-r from-transparent via-gray-600 to-transparent opacity-75'></div>
       <div>
         <table className='mx-auto my-4'>
-          <tr className='bg-[#19191a]'>
-            <th className='font-medium text-[13px] py-4 px-7 '>BITCOIN</th>
-            <th className='font-medium text-[13px] py-4 px-7'>PRICE(BTC)</th>
-            <th className='font-medium text-[13px] py-4 px-7'>
-              TOTAL AMOUNT($)
-            </th>
-            <th className='font-medium text-[13px] py-4 px-7'>
-              AVERAGE PRICE(BTC)
-            </th>
-            <th className='font-medium text-[13px] py-4 px-7'>TOTAL(BTC)</th>
-          </tr>
-          {data.map((item, index) => (
-            <tr className='text-center pr-2' key={index}>
-              <td className='py-[12px]  text-[13px] border-b border-[#d6d0d01d]'>
-                {item.name}
-              </td>
-              <td className='py-[12px]  text-[13px] border-b border-[#d6d0d01d]'>
-                {item.priceBTC}
-              </td>
-              <td className='py-[12px]  text-[13px] border-b border-[#d6d0d01d]'>
-                {item.totalAmount}
-              </td>
-              <td className='py-[12px]  text-[13px] border-b border-[#d6d0d01d]'>
-                {item.averagePriceBTC}
-              </td>
-              <td className='py-[12px]  text-[13px] border-b border-[#d6d0d01d]'>
-                {item.totalBTC}
-              </td>
+          <thead className='bg-[#19191a]'>
+            <tr>
+              <th className='font-medium text-[13px] py-4 px-7 '>BITCOIN</th>
+              <th className='font-medium text-[13px] py-4 px-7'>PRICE(BTC)</th>
+              <th className='font-medium text-[13px] py-4 px-7'>
+                TOTAL AMOUNT($)
+              </th>
+              <th className='font-medium text-[13px] py-4 px-7'>
+                AVERAGE PRICE(BTC)
+              </th>
+              <th className='font-medium text-[13px] py-4 px-7'>TOTAL(BTC)</th>
             </tr>
-          ))}
+          </thead>
+          <tbody>
+            {data.map((item, index) => (
+              <tr className='text-center pr-2' key={index}>
+                <td className='py-[12px]  text-[13px] border-b border-[#d6d0d01d]'>
+                  {item.name}
+                </td>
+                <td className='py-[12px]  text-[13px] border-b border-[#d6d0d01d]'>
+                  {item.priceBTC}
+                </td>
+                <td className='py-[12px]  text-[13px] border-b border-[#d6d0d01d]'>
+                  {item.totalAmount}
+                </td>
+                <td className='py-[12px]  text-[13px] border-b border-[#d6d0d01d]'>
+                  {item.averagePriceBTC}
+                </td>
+                <td className='py-[12px]  text-[13px] border-b border-[#d6d0d01d]'>
+                  {item.totalBTC}
+                </td>
+              </tr>
+            ))}
+          </tbody>
         </table>
       </div>
     </div>

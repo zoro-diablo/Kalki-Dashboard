@@ -9,7 +9,7 @@ import './main.scss'
 
 const Main = () => {
   return (
-    <div className='main h-screen overflow-y-auto w-full'>
+    <div className='main h-screen overflow-y-auto w-full text-[#bfbfbf]'>
       <Navbar />
       <div className='grid grid-cols-6 grid-rows-5 gap-[32px]'>
         <div className='col-span-4 row-span-3 mt-[32px] ml-[32px]'>

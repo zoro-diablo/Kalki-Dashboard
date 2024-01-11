@@ -54,7 +54,7 @@ const Transaction = () => {
           key={transaction.id}
         >
           <div className='pl-5 flex gap-x-4'>
-            <img src='/coin.png' alt='coin' width={42} />
+            <img src='/coin.png' alt='coin' className='w-auto h-12' />
             <div>
               <div>
                 <p className='text-[13px] text-[#ffffffdb] font-semibold'>

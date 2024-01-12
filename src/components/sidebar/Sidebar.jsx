@@ -74,7 +74,7 @@ const Sidebar = () => {
           </div>
           <div className='user-details flex items-center'>
             <p className='title logo-title cursor-pointer text-[19px] font-[500] text-white'>
-              FnMoney
+             Kalki
             </p>
           </div>
           <div

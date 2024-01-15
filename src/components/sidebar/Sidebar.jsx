@@ -66,7 +66,7 @@ const Sidebar = () => {
         <div className='head flex fixed py-[13px] pl-[16px]'>
           <div className='flex'>
             <img
-              src='/logo.png'
+              src='/logotwo.png'
               alt='fn'
               className='cursor-pointer'
               width={50}

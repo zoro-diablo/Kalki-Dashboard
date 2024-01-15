@@ -1,3 +1,3 @@
-# FnMoney
+# Kalki
 
-https://fnmoney.netlify.app/
+https://kalki-dashboard.netlify.app
